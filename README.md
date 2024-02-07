@@ -22,7 +22,8 @@ pipenv install
 
 ## How to run
 pipenv run python3 assignment0/main.py --incidents <url>
-![video](https://youtu.be/775e0nLt4gs)
+
+[![Watch the video](https://img.youtube.com/vi/775e0nLt4gs/0.jpg)](https://www.youtube.com/watch?v=775e0nLt4gs)
 
 ## How to test
 pipenv run python3 -m pytest <test_file>
@@ -80,6 +81,7 @@ Database connection close -
 The connection object is closed after the execution of the status() method, since it is the final method in the whole project flow. 
 
 ## Bugs and Assumptions
-1. ORI number is any of the following values - ['OK0140200', 'EMSSTAT', '14005']. If a pdf file contains ori numbers that are not in this list, they can't be extracted using this code.
-2. Address is only a street address and in NOT in any other form (like lat-long). Full country address cannot be captured using this code.
+1. ORI number is any of the following values - ['OK0140200', 'EMSSTAT', '14005', '14009']. If a pdf file contains ori numbers that are not in this list, they can't be extracted using this code.
+2. Address is only a street address and in NOT in any other form (like ending with country, state, etc.). Global address cannot be captured using this code.
+3. This code is limited to parsing only US street addresses.
 

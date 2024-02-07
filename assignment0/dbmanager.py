@@ -12,7 +12,7 @@ def createdb(db_name):
             nature TEXT,
             incident_ori TEXT
                 )""")
-        print('CREATED THE DATABASE {}'.format(db_name))
+        # print('CREATED THE DATABASE {}'.format(db_name))
     except Exception as e:
         if "table incidents already exists" in str(e):
             print("Table already exists. No need to create.")
@@ -30,11 +30,11 @@ def populatedb(con, incidents):
                           (incident_time, incident_number, incident_location, nature, incident_ori) 
                           VALUES (?, ?, ?, ?, ?);"""
     cur.executemany(sqlite_insert_query, incidents)
-    print('ADDED DATA IN SQLITE3 DATABASE!')
-    print('rows affected = ', cur.rowcount)
+    # print('ADDED DATA IN SQLITE3 DATABASE!')
+    # print('rows affected = ', cur.rowcount)
     cur.execute("SELECT COUNT(*) FROM incidents")
     total_rows = cur.fetchone()[0]
-    print('Total Number of rows in the table = ', total_rows)
+    # print('Total Number of rows in the table = ', total_rows)
     con.commit()
     cur.close()
 
@@ -50,8 +50,14 @@ def status(con):
         ORDER BY incident_count DESC, nature
     """)
     rows = cur.fetchall()
-    print("Nature|Incident Count")
+    empty_natures = list()
     for row in rows:
+        nature, incident_count = row
+        if nature=='':
+            empty_natures.append((nature, incident_count))
+            continue
+        print(f"{nature}|{incident_count}")
+    for row in empty_natures:
         nature, incident_count = row
         print(f"{nature}|{incident_count}")
     cur.close()

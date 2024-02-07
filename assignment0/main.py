@@ -2,6 +2,7 @@ import argparse
 from fetchincidents import fetchincidents
 from extractdata import extractdata
 from dbmanager import createdb, populatedb, status
+import sys
 # from assignment0 import fetchincidents
 # from . import fetchincidents
 PDF_PATH = 'resources/incident_data.pdf'
@@ -12,10 +13,10 @@ def main(url):
         and prints the status of the incidents"""
     # # Download data
     incident_data = fetchincidents(url)
-    print("WRITING DATA")
+    # print("WRITING DATA")
     with open(PDF_PATH,'wb') as file:
         file.write(incident_data)
-    print("Data Fetched and Downloaded!")
+    # print("Data Fetched and Downloaded!")
 
     # # Extract data
     # all_incidents = extractdata(incident_data)
@@ -29,6 +30,7 @@ def main(url):
 	
     # # Print incident counts
     status(db)
+    sys.exit(0)
 
 
 

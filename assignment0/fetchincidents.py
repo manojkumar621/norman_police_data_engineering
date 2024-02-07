@@ -14,6 +14,15 @@ def fetchincidents(url):
     context.verify_mode = ssl.CERT_NONE
 
     data = urllib.request.urlopen(urllib.request.Request(url, headers=headers), context=context).read()
+    # print('PRINTING FILE URL')
+    # substring = "https://www.normanok.gov/sites/default/files/"
+    # index = url.find(substring)
+
+    # # Check if the substring is found in the URL
+    # if index != -1:
+    #     # Get the text after the substring
+    #     result = url[index + len(substring):]
+    #     print(result)
     
     # data = urllib.request.urlopen(urllib.request.Request(url, headers=headers)).read()   
     return data
