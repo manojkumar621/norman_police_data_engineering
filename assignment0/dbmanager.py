@@ -53,12 +53,6 @@ def status(con):
     empty_natures = list()
     for row in rows:
         nature, incident_count = row
-        if nature=='':
-            empty_natures.append((nature, incident_count))
-            continue
-        print(f"{nature}|{incident_count}")
-    for row in empty_natures:
-        nature, incident_count = row
         print(f"{nature}|{incident_count}")
     cur.close()
     con.close()
